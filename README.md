@@ -9,7 +9,7 @@ here is the base project：[Virus-School](https://github.com/YunxiuXu/Virus-Scho
 + At the last day the system will find the related contact people.
 
 ## Scene design
-There are four place in this system :
+There are four places in this system :
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/scenes.png)
 
