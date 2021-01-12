@@ -13,14 +13,14 @@ There are four place in this system :
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/scenes.png)
 
-Here is the types of people:
+## the types of people:
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/type.png)
 
-+ first level contact person means : the person who direct contact with infected person
-+ second level contact person means : the person who indirect contact with infected person
++ first level contacted person means : the person who direct contact with infectors
++ second level contacted person means : the person who indirect contact with infectors
 
-About the movement of each person, to facilitate debugging, in the system, the movement of infected people will be relatively small, the rest of the characters will move between places at different time points every day, and at 21:00 every day, all the characters will return to the residence until the beginning of the next day
+About the movement of each person, to facilitate debugging, in the system, the movement of the first infector will be relatively small, the rest of the characters will move between places at different time points every day, and at 21:00 every day, all the characters will return to the residence until the beginning of the next day
 
 this is the initial state:
 
@@ -40,10 +40,11 @@ After three days:
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/last_state.png)
 
-Finally, on the third day, the system will find all the first-level person (red) and second-level person (yellow). The specific list is shown:
+Finally, the system will find out all the first-level person (red) and second-level person (yellow). The specific list is shown:
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/track_info.png)
 
+## Details
 Here, I use a HashMap<UserID,Info> to store the track information.
 Each place have a trigger, when people go into the place, the trigger will write a message to the HashMap.
 At the end of the last day, the system will first build risk tables which represent the risk time of each place using the first infector track information.
