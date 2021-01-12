@@ -1,9 +1,50 @@
-# Virus-School
+# epidemic-propagation-simulator
 
-Unity模拟病毒在校园中传播
-Unity版本 2017.4.36c1 Win10
+this is an infector contact tracking system based on unity3d engine.
 
-压缩包大小仅3.4M，没有使用奇奇怪怪的资源，所以大部分版本都可以一下子跑通。但是2018以后的版本需要重新导入资源包(UnityEngine.UI, UnityEngine.AI等等); 一些版本可能需要改一下部分类名和函数名。Mac会弹出一堆对话框全部点Continue就OK。
-本人确实不能做出合适的数学模型定量分析，所以仅供娱乐～
+here is the base project：[Virus-School](https://github.com/YunxiuXu/Virus-School)
 
-另外场景里的0号病人 stu0 比较特殊 他在Inspector里的Infected参数是3，所以开局就是橙色。并且一直不会发病，只会传染。
++ I redesign the character behavior and the scene.
++ I add the functions of data collection and storage.
++ At the last day the system will find the related contact people.
+
+## Scene design
+There are four place in this system :
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/scenes.png)
+
+Here is the types of people:
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/type.png)
+
++ first level contact person means : the person who direct contact with infected person
++ second level contact person means : the person who indirect contact with infected person
+
+About the movement of each person, to facilitate debugging, in the system, the movement of infected people will be relatively small, the rest of the characters will move between places at different time points every day, and at 21:00 every day, all the characters will return to the residence until the beginning of the next day
+
+this is the initial state:
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/init_state.png)
+
+and we start the system, some people will move:
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/move_state.png)
+
+we can see that the infector go to the shopping martket and one healthy person stay with him.
+After serval minutes, the healthy person go out. Meanwhile, the system will stored a string of "student5(name),1(place_id),0(days),168(in_time),251(out_time)" in List<string>.
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/move_state2.png)
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/info.png)
+
+After three days:
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/last_state.png)
+
+Finally, on the third day, the system will find all the first-level person (red) and second-level person (yellow). The specific list is shown:
+
+![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/track_info.png)
+
+Here, I use a HashMap<UserID,Info> to store the track information.
+Each place have a trigger, when people go into the place, the trigger will write a message to the HashMap.
+At the end of the last day, the system will first build risk tables which represent the risk time of each place using the first infector track information.
+Then, the system will check each person to find out whether he is the potential infector.
