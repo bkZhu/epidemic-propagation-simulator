@@ -20,7 +20,7 @@ There are four places in this system :
 + first level contacted person means : the person who direct contact with infectors
 + second level contacted person means : the person who indirect contact with infectors
 
-About the movement of each person, to facilitate debugging, in the system, the movement of the first infector will be relatively small, the rest of the characters will move between places at different time points every day, and at 21:00 every day, all the characters will return to the residence until the beginning of the next day
+About the movement of each person, to facilitate debugging, in the system, the movement of the first infector will be relatively small, the rest of the characters will move between places at different time points every day, and at 21:00 every day, all the characters will return to the residence until the beginning of the next day.
 
 this is the initial state:
 
