@@ -30,8 +30,8 @@ and we start the system, some people will move:
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/move_state.png)
 
-we can see that the infector go to the shopping martket and one healthy person stay with him.
-After serval minutes, the healthy person go out. Meanwhile, the system will stored a string of "student5(name),1(place_id),0(days),168(in_time),251(out_time)" in List<string>.
+we can see that the infector goes to the shopping market and one healthy person stays with him.
+After serval minutes, the healthy person goes out. Meanwhile, the system stores a string of "student5(name),1(place_id),0(days),168(in_time),251(out_time)" in List<string>.
 
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/move_state2.png)
 ![image](https://github.com/bkZhu/epidemic-propagation-simulator/blob/main/images/info.png)
@@ -46,6 +46,6 @@ Finally, the system will find out all the first-level person (red) and second-le
 
 ## Details
 Here, I use a HashMap<UserID,Info> to store the track information.
-Each place have a trigger, when people go into the place, the trigger will write a message to the HashMap.
-At the end of the last day, the system will first build risk tables which represent the risk time of each place using the first infector track information.
+Each place has a trigger, when people go into the place, the trigger will write a message to the HashMap.
+At the end of the last day, the system will first build risk tables that represent the risk time of each place using the first infector track information.
 Then, the system will check each person to find out whether he is the potential infector.
